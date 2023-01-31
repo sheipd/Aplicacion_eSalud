@@ -1,0 +1,84 @@
+body{
+    background-color: #CEFFCD;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    border-bottom: solid lightgray 0.15em;
+}
+
+aside{
+    width: 25%;
+    display: inline-block;
+}
+
+section{
+    width: 70%;
+    float: right;
+}
+
+
+section, header, footer{
+    padding: 1em;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+}
+
+h1{
+    padding-left: 1em;
+    font-family: 'Barlow', sans-serif;;
+}
+
+dd:not(:first-child){
+    text-align: center;
+    width: 50%;
+    margin: 0.2em;
+    border-radius: 8%;
+    border: 0.1em solid black;
+    background-color: lightgray;
+}
+
+fieldset{
+    padding: 1em;
+}
+
+input, select{
+    display: block;
+    margin-bottom: 1em;
+}
+
+button{
+    margin-bottom: 1em;
+}
+
+.imagen{
+    width: 10%;
+}
+
+.imagen img{
+    width: 100%;
+}
+
+.ocultar{
+    display: none;
+}
+
+#fsMisCitas label, button{
+    display: block;
+}
+
+#lbAdios{
+    border: 0.1em dashed darkgrey;
+    border-radius: 10%;
+}
+
+#usuario{
+    text-align: center;
+    width: 50%;
+    margin: 0.2em;
+    font-weight: bold;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap" rel="stylesheet">
+    <script src="script/script.js"></script>
+    <title>eSalud</title>
+</head>
+<body>
+    <header>
+        <div class="imagen">
+            <img src="imagenes/logo.png" alt="">
+        </div>
+        <h1>eSalud</h1>
+    </header>
+    <aside>
+        <dl>
+            <dd id="usuario" class="ocultar">Usuario: </dd>
+            <dd id="misCitas">Mis citas</dd>
+            <dd id="pedirCita">Pedir cita</dd>
+            <dd id="cerrarSesion">Cerrar sesión</dd>
+        </dl>
+    </aside>
+    <section>
+        <fieldset id="fsLogin">
+            <legend>Login</legend>
+            <label for="login">Usuario: </label>
+            <input type="text" id="login" autofocus>
+            <label for="password">Password: </label>
+            <input type="password" id="password">
+            <button type="button" id="btnEnviar">Enviar</button>
+            <label id="lbBienvenido" class="ocultar">¡Bienvenido/a!</label>
+            <label id="lbAdios" class="ocultar">¡Hasta pronto!</label>
+        </fieldset>
+        <fieldset id="fsMisCitas" class="ocultar">
+            <legend>Mis citas</legend>
+        </fieldset>
+        <fieldset id="fsPedirCita" class="ocultar">
+            <legend>Pedir cita</legend>
+            <label for="slEspecialidades">Seleccione especialidad: </label>
+            <select id="slEspecialidades"></select>
+            <label for="slEspecialistas">Seleccione especialista: </label>
+            <select id="slEspecialistas"></select>
+            <label for="dia">Seleccione un día: </label>
+            <input type="date" id="dia">
+            <label for="hora">Seleccione una hora: </label>
+            <select id="slHora"></select>
+            <button id="btPedirCita">Reservar cita</button>
+        </fieldset>
+    </section>
+    <footer>Realizado por Sheila Peralta Díaz</footer>
+</body>
+</html>
