@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eSaludModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cita">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="paciente" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="cuadrante" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cuadrante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dia" Type="date" Nullable="false" />
+    <Property Name="hora" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="medico" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="disponible" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="denominacion" Type="varchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="hora">
+    <Key>
+      <PropertyRef Name="tramo" />
+    </Key>
+    <Property Name="tramo" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="medico">
+    <Key>
+      <PropertyRef Name="nif" />
+    </Key>
+    <Property Name="nif" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="colegiado" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="telefono" Type="char" MaxLength="9" />
+    <Property Name="email" Type="varchar" MaxLength="256" />
+    <Property Name="password" Type="varchar" MaxLength="20" />
+    <Property Name="rama" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="paciente">
+    <Key>
+      <PropertyRef Name="nif" />
+    </Key>
+    <Property Name="nif" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="aseguradora" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="_key" Type="char" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_cita_cuadrante">
+    <End Role="cuadrante" Type="Self.cuadrante" Multiplicity="1" />
+    <End Role="cita" Type="Self.cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuadrante">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cita">
+        <PropertyRef Name="cuadrante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cita_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1" />
+    <End Role="cita" Type="Self.cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="nif" />
+      </Principal>
+      <Dependent Role="cita">
+        <PropertyRef Name="paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cuadrante_hora">
+    <End Role="hora" Type="Self.hora" Multiplicity="1" />
+    <End Role="cuadrante" Type="Self.cuadrante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hora">
+        <PropertyRef Name="tramo" />
+      </Principal>
+      <Dependent Role="cuadrante">
+        <PropertyRef Name="hora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cuadrante_medico">
+    <End Role="medico" Type="Self.medico" Multiplicity="1" />
+    <End Role="cuadrante" Type="Self.cuadrante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="nif" />
+      </Principal>
+      <Dependent Role="cuadrante">
+        <PropertyRef Name="medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medico_especialidad">
+    <End Role="especialidad" Type="Self.especialidad" Multiplicity="1" />
+    <End Role="medico" Type="Self.medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="especialidad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="medico">
+        <PropertyRef Name="rama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eSaludModelStoreContainer">
+    <EntitySet Name="cita" EntityType="Self.cita" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cuadrante" EntityType="Self.cuadrante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hora" EntityType="Self.hora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_cita_cuadrante" Association="Self.FK_cita_cuadrante">
+      <End Role="cuadrante" EntitySet="cuadrante" />
+      <End Role="cita" EntitySet="cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cita_paciente" Association="Self.FK_cita_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="cita" EntitySet="cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cuadrante_hora" Association="Self.FK_cuadrante_hora">
+      <End Role="hora" EntitySet="hora" />
+      <End Role="cuadrante" EntitySet="cuadrante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cuadrante_medico" Association="Self.FK_cuadrante_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="cuadrante" EntitySet="cuadrante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medico_especialidad" Association="Self.FK_medico_especialidad">
+      <End Role="especialidad" EntitySet="especialidad" />
+      <End Role="medico" EntitySet="medico" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

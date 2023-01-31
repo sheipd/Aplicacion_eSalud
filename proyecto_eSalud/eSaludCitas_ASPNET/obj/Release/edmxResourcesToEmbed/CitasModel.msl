@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eSaludModelStoreContainer" CdmEntityContainer="eSaludEntities">
+    <EntitySetMapping Name="citas">
+      <EntityTypeMapping TypeName="eSaludModel.cita">
+        <MappingFragment StoreEntitySet="cita">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="paciente" ColumnName="paciente" />
+          <ScalarProperty Name="cuadrante" ColumnName="cuadrante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuadrantes">
+      <EntityTypeMapping TypeName="eSaludModel.cuadrante">
+        <MappingFragment StoreEntitySet="cuadrante">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dia" ColumnName="dia" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="medico" ColumnName="medico" />
+          <ScalarProperty Name="disponible" ColumnName="disponible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="especialidades">
+      <EntityTypeMapping TypeName="eSaludModel.especialidad">
+        <MappingFragment StoreEntitySet="especialidad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="denominacion" ColumnName="denominacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="horas">
+      <EntityTypeMapping TypeName="eSaludModel.hora">
+        <MappingFragment StoreEntitySet="hora">
+          <ScalarProperty Name="tramo" ColumnName="tramo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medicos">
+      <EntityTypeMapping TypeName="eSaludModel.medico">
+        <MappingFragment StoreEntitySet="medico">
+          <ScalarProperty Name="nif" ColumnName="nif" />
+          <ScalarProperty Name="colegiado" ColumnName="colegiado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="rama" ColumnName="rama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pacientes">
+      <EntityTypeMapping TypeName="eSaludModel.paciente">
+        <MappingFragment StoreEntitySet="paciente">
+          <ScalarProperty Name="nif" ColumnName="nif" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="aseguradora" ColumnName="aseguradora" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="C_key" ColumnName="_key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
